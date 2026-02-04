@@ -4,189 +4,205 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pengumuman Hasil SPMB 2026 | SMK Negeri 1 Cirebon</title>
+<title>Pengumuman Hasil SPMB 2026 | SMKN 1 Cirebon</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#f4f7fb;
-}
-
-/* HERO */
-
-.hero{
-    height:70vh;
-    background:linear-gradient(135deg,#1a3a6c,#2c5aa0);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    padding:20px;
-}
-
-.hero h1{
-    font-size:42px;
-    margin-bottom:10px;
-}
-
-.hero p{
-    opacity:.9;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
 }
 
 /* CARD */
 
 .card{
-    background:white;
-    max-width:800px;
-    margin:-80px auto 40px;
-    padding:40px;
-    border-radius:14px;
-    box-shadow:0 10px 40px rgba(0,0,0,.08);
+width:95%;
+max-width:750px;
+background:white;
+color:#333;
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,.4);
+animation:fadeUp 1s ease;
 }
 
-/* INPUT */
+h1{
+margin-bottom:10px;
+}
 
 .search-box{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
+margin-top:30px;
+display:flex;
+gap:10px;
 }
 
 input{
-    flex:1;
-    height:55px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    padding:0 15px;
-    font-size:18px;
+flex:1;
+padding:14px;
+border-radius:12px;
+border:1px solid #ccc;
+font-size:16px;
 }
 
 button{
-    background:#e65c00;
-    border:none;
-    color:white;
-    padding:0 30px;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
+padding:14px 20px;
+border:none;
+border-radius:12px;
+background:#1e88e5;
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
 }
 
 button:hover{
-    background:#cc4f00;
-    transform:translateY(-2px);
+background:#1565c0;
 }
-
-/* RESULT */
 
 .result{
-    margin-top:30px;
-    animation:fade .4s ease;
-}
-
-@keyframes fade{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1;}
+margin-top:30px;
+animation:fadeUp .6s ease;
 }
 
 .success{
-    border-top:6px solid #28a745;
+background:#f1fff5;
+border:2px solid #22c55e;
+padding:25px;
+border-radius:16px;
 }
 
 .fail{
-    border-top:6px solid #dc3545;
+background:#fff5f5;
+border:2px solid #ef4444;
+padding:25px;
+border-radius:16px;
 }
 
-.box{
-    padding:30px;
-    border-radius:12px;
-    background:white;
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
+/* LOCK SCREEN */
+
+.lock{
+position:fixed;
+inset:0;
+background:#0f2027;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+z-index:999;
 }
 
-h2{
-    margin-bottom:10px;
+.lock h1{
+font-size:32px;
+margin-bottom:10px;
 }
 
-ol{
-    margin-left:20px;
-    line-height:1.9;
+.fade{
+animation:fadeUp .8s ease;
 }
 
-/* MOBILE */
-
-@media(max-width:700px){
-
-.hero h1{
-    font-size:28px;
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
 }
-
-.card{
-    margin:-60px 15px 30px;
-    padding:25px;
+to{
+opacity:1;
+transform:translateY(0);
 }
-
-.search-box{
-    flex-direction:column;
-}
-
-button{
-    height:50px;
-}
-
 }
 
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-
-<section class="hero">
-<div>
-<h1>PENGUMUMAN HASIL SPMB 2026</h1>
-<p>SMK Negeri 1 Cirebon</p>
+<!-- LOCK SCREEN -->
+<div id="lockScreen" class="lock">
+<h1>🔒 Pengumuman Belum Dibuka</h1>
+<p>Hasil seleksi dapat diakses pada:</p>
+<h2 id="countdown"></h2>
 </div>
-</section>
-
-<!-- CARD -->
 
 <div class="card">
 
-<h2>Cek Hasil Seleksi</h2>
-<p>Masukkan nomor pendaftaran Anda untuk melihat hasil kelulusan.</p>
+<h1>PENGUMUMAN HASIL SPMB</h1>
+<p>SMK Negeri 1 Cirebon<br>Tahun Ajaran 2026/2027</p>
 
 <div class="search-box">
 <input 
-type="text" 
+type="text"
 id="searchInput"
 placeholder="Masukkan Nomor Pendaftaran..."
 onkeypress="if(event.key==='Enter')searchData()"
 >
-
-<button onclick="searchData()">Cek Hasil</button>
+<button onclick="searchData()">Cek</button>
 </div>
 
 <div id="resultBox" class="result"></div>
 
 </div>
 
+<!-- AUDIO -->
+<audio id="successSound">
+<source src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3">
+</audio>
+
 <script>
 
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQjxc3-Df3kU19LyONmTY7K8RMpb_riUr4qKRRTXeLWA45uZzouYmj7aVdaaP5LhWxqBC6yI3GwKWjV/pub?output=csv";
+/* ===============================
+SET JAM PENGUMUMAN DI SINI
+================================= */
 
-let sheetData = [];
+const releaseDate = new Date("February 03, 2026 10:00:00").getTime();
+
+/* ================================= */
+
+const lockScreen = document.getElementById("lockScreen");
+const countdown = document.getElementById("countdown");
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+const distance = releaseDate - now;
+
+if(distance <= 0){
+
+lockScreen.style.display="none";
+return;
+}
+
+const d = Math.floor(distance/(1000*60*60*24));
+const h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const m = Math.floor((distance%(1000*60*60))/(1000*60));
+
+countdown.innerHTML = `${d} Hari ${h} Jam ${m} Menit`;
+
+},1000);
+
+
+/* ===============================
+GOOGLE SHEET
+================================= */
+
+const sheetURL = "MASUKKAN CSV GOOGLE SHEET";
+
+let sheetData=[];
 
 fetch(sheetURL)
 .then(res=>res.text())
@@ -195,128 +211,114 @@ fetch(sheetURL)
 const rows = csv.split("\n").slice(1);
 
 sheetData = rows.map(row=>{
-
-const cols = row.split(",");
+const cols=row.split(",");
 
 return{
-registration_number: cols[0]?.replace(/"/g,'').trim(),
-student_name: cols[1]?.replace(/"/g,'').trim(),
-major: cols[2]?.replace(/"/g,'').trim(),
-registration_path: cols[3]?.replace(/"/g,'').trim(),
-status: cols[4]?.replace(/"/g,'').trim(),
-registration_schedule: cols[5]?.replace(/"/g,'').trim(),
-school_name: cols[6]?.replace(/"/g,'').trim(),
+registration_number:cols[0]?.replace(/"/g,'').trim(),
+student_name:cols[1]?.replace(/"/g,'').trim(),
+major:cols[2]?.replace(/"/g,'').trim(),
+registration_path:cols[3]?.replace(/"/g,'').trim(),
+status:cols[4]?.replace(/"/g,'').trim(),
+registration_schedule:cols[5]?.replace(/"/g,'').trim(),
+school_name:cols[6]?.replace(/"/g,'').trim(),
 }
 
 });
 
 });
 
+
+/* ===============================
+SEARCH
+================================= */
+
+let clicked=false;
 
 function searchData(){
 
-const input = document
-.getElementById("searchInput")
-.value
-.trim();
+if(clicked) return;
+clicked=true;
+setTimeout(()=>clicked=false,2000);
 
-const resultBox = document.getElementById("resultBox");
+const input=document.getElementById("searchInput").value.trim();
+const resultBox=document.getElementById("resultBox");
 
-if(!input){
-resultBox.innerHTML=`
-<div class="box fail">
-<h3>Masukkan nomor pendaftaran terlebih dahulu.</h3>
-</div>`;
-return;
-}
-
-const student = sheetData.find(
+const student=sheetData.find(
 s=>s.registration_number===input
 );
 
 if(!student){
 
 resultBox.innerHTML=`
-<div class="box fail">
-<h3>Data tidak ditemukan</h3>
+<div class="fail fade">
+<h2>Data tidak ditemukan</h2>
 <p>Periksa kembali nomor pendaftaran Anda.</p>
 </div>
 `;
-
 return;
 }
 
-const isAccepted = student.status
-.toLowerCase()
-.includes("diterima") || 
-student.status
-.toLowerCase()
-.includes("lulus");
+const isAccepted=student.status.toLowerCase().includes("diterima") 
+|| student.status.toLowerCase().includes("lulus");
 
 if(isAccepted){
 
+/* CONFETTI */
+confetti({
+particleCount:150,
+spread:120,
+origin:{y:.6}
+});
+
+/* SOUND */
+document.getElementById("successSound").play();
+
 resultBox.innerHTML=`
 
-<div class="box success">
+<div class="success fade">
 
-<h2>🎉 SELAMAT!</h2>
+<h2>✨ SELAMAT ATAS KEBERHASILAN ANDA ✨</h2>
 
-<h3>${student.student_name}</h3>
+<h1 style="margin:10px 0;">
+${student.student_name}
+</h1>
 
-<p><b>Dinyatakan ${student.status.toUpperCase()}</b><br>
-di <b>${student.school_name}</b></p>
-
-<p>
-<b>${student.major}</b><br>
-${student.registration_path}
-</p>
+<p><b>DINYATAKAN ${student.status.toUpperCase()}</b></p>
 
 <hr style="margin:20px 0;">
 
-<p><b>Nomor Pendaftaran:</b><br>
-${student.registration_number}</p>
+<p><b>Program Keahlian:</b><br>${student.major}</p>
+<p><b>Jalur:</b><br>${student.registration_path}</p>
 
-<p style="margin-top:10px;">
-<b>🗓️ Jadwal Daftar Ulang:</b><br>
+<p style="margin-top:15px;">
+🗓️ <b>Daftar Ulang:</b><br>
 ${student.registration_schedule}
 </p>
 
-<hr style="margin:20px 0;">
-
-<h3>📌 Persyaratan yang dibawa:</h3>
-
-<ol>
-<li>Print hasil diterima SPMB</li>
-<li>Membawa Materai 10Rb sebanyak 3 Lembar</li>
-<li>Membawa map berwarna kuning</li>
-<li>FC Persyaratan umum dan khusus</li>
-<li>Surat Keterangan Sehat (Asli)</li>
-<li>SPTJM asli bermaterai</li>
-<li>Memakai seragam sekolah asal dan bersepatu</li>
-<li>Membawa alat tulis</li>
-</ol>
+<button onclick="window.print()" 
+style="margin-top:20px;background:#22c55e;">
+Download / Print Bukti Kelulusan
+</button>
 
 </div>
-
 `;
 
 }else{
 
 resultBox.innerHTML=`
 
-<div class="box fail">
+<div class="fail fade">
 
-<h2>Mohon Maaf</h2>
+<h2>Terima Kasih</h2>
 
 <h3>${student.student_name}</h3>
 
-<p>Anda belum dinyatakan diterima di <b>${student.school_name}</b>.</p>
+<p>Anda belum dinyatakan diterima di
+<b>${student.school_name}</b>.</p>
 
-<p>Tetap semangat dan jangan menyerah.  
-Kesempatan sukses masih sangat luas!</p>
+<p>Tetap semangat — masa depan cerah menanti Anda.</p>
 
 </div>
-
 `;
 
 }
