@@ -4,205 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pengumuman Hasil SPMB 2026 | SMKN 1 Cirebon</title>
+<title>Pengumuman Hasil SPMB 2026 | SMK Negeri 1 Cirebon</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-}
-
-/* CARD */
-
-.card{
-width:95%;
-max-width:750px;
-background:white;
-color:#333;
-padding:40px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 20px 60px rgba(0,0,0,.4);
-animation:fadeUp 1s ease;
-}
-
-h1{
-margin-bottom:10px;
-}
-
-.search-box{
-margin-top:30px;
-display:flex;
-gap:10px;
-}
-
-input{
-flex:1;
-padding:14px;
-border-radius:12px;
-border:1px solid #ccc;
-font-size:16px;
-}
-
-button{
-padding:14px 20px;
-border:none;
-border-radius:12px;
-background:#1e88e5;
-color:white;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-background:#1565c0;
-}
-
-.result{
-margin-top:30px;
-animation:fadeUp .6s ease;
-}
-
-.success{
-background:#f1fff5;
-border:2px solid #22c55e;
-padding:25px;
-border-radius:16px;
-}
-
-.fail{
-background:#fff5f5;
-border:2px solid #ef4444;
-padding:25px;
-border-radius:16px;
-}
-
-/* LOCK SCREEN */
-
-.lock{
-position:fixed;
-inset:0;
-background:#0f2027;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-z-index:999;
-}
-
-.lock h1{
-font-size:32px;
-margin-bottom:10px;
-}
-
-.fade{
-animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Tambahkan Font Awesome untuk ikon -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="img/logo.png" alt="Logo" style="height: 50px;">
+                    </div>
+                    <div class="logo-text">
+                        SMKN 1 CIREBON
+                        <span>Sekolah Menengah Kejuruan Negeri 1 Cirebon</span>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#beranda" class="active">Beranda</a></li>
+                    <li><a href="#spmb">Informasi SPMB</a></li>
+                    <li><a href="#jurusan">Jurusan</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="hasil_spmb.html">Hasil Seleksi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<!-- HERO -->
 
-<!-- LOCK SCREEN -->
-<div id="lockScreen" class="lock">
-<h1>🔒 Pengumuman Belum Dibuka</h1>
-<p>Hasil seleksi dapat diakses pada:</p>
-<h2 id="countdown"></h2>
+<section class="hero">
+<div>
+<h1>PENGUMUMAN HASIL SPMB 2026</h1>
+<p>SMK Negeri 1 Cirebon</p>
 </div>
+</section>
+
+<!-- CARD -->
 
 <div class="card">
 
-<h1>PENGUMUMAN HASIL SPMB</h1>
-<p>SMK Negeri 1 Cirebon<br>Tahun Ajaran 2026/2027</p>
+<h2><i class="fas fa-search"></i> Cek Hasil Seleksi</h2>
+<p>Masukkan nomor pendaftaran Anda untuk melihat hasil kelulusan.</p>
 
 <div class="search-box">
 <input 
-type="text"
+type="text" 
 id="searchInput"
 placeholder="Masukkan Nomor Pendaftaran..."
 onkeypress="if(event.key==='Enter')searchData()"
 >
-<button onclick="searchData()">Cek</button>
+
+<button onclick="searchData()"><i class="fas fa-check"></i> Cek Hasil</button>
 </div>
 
 <div id="resultBox" class="result"></div>
 
 </div>
 
-<!-- AUDIO -->
-<audio id="successSound">
-<source src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3">
-</audio>
-
 <script>
 
-/* ===============================
-SET JAM PENGUMUMAN DI SINI
-================================= */
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQjxc3-Df3kU19LyONmTY7K8RMpb_riUr4qKRRTXeLWA45uZzouYmj7aVdaaP5LhWxqBC6yI3GwKWjV/pub?output=csv";
 
-const releaseDate = new Date("February 03, 2026 10:00:00").getTime();
-
-/* ================================= */
-
-const lockScreen = document.getElementById("lockScreen");
-const countdown = document.getElementById("countdown");
-
-setInterval(()=>{
-
-const now = new Date().getTime();
-const distance = releaseDate - now;
-
-if(distance <= 0){
-
-lockScreen.style.display="none";
-return;
-}
-
-const d = Math.floor(distance/(1000*60*60*24));
-const h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const m = Math.floor((distance%(1000*60*60))/(1000*60));
-
-countdown.innerHTML = `${d} Hari ${h} Jam ${m} Menit`;
-
-},1000);
-
-
-/* ===============================
-GOOGLE SHEET
-================================= */
-
-const sheetURL = "MASUKKAN CSV GOOGLE SHEET";
-
-let sheetData=[];
+let sheetData = [];
 
 fetch(sheetURL)
 .then(res=>res.text())
@@ -211,16 +81,17 @@ fetch(sheetURL)
 const rows = csv.split("\n").slice(1);
 
 sheetData = rows.map(row=>{
-const cols=row.split(",");
+
+const cols = row.split(",");
 
 return{
-registration_number:cols[0]?.replace(/"/g,'').trim(),
-student_name:cols[1]?.replace(/"/g,'').trim(),
-major:cols[2]?.replace(/"/g,'').trim(),
-registration_path:cols[3]?.replace(/"/g,'').trim(),
-status:cols[4]?.replace(/"/g,'').trim(),
-registration_schedule:cols[5]?.replace(/"/g,'').trim(),
-school_name:cols[6]?.replace(/"/g,'').trim(),
+registration_number: cols[0]?.replace(/"/g,'').trim(),
+student_name: cols[1]?.replace(/"/g,'').trim(),
+major: cols[2]?.replace(/"/g,'').trim(),
+registration_path: cols[3]?.replace(/"/g,'').trim(),
+status: cols[4]?.replace(/"/g,'').trim(),
+registration_schedule: cols[5]?.replace(/"/g,'').trim(),
+school_name: cols[6]?.replace(/"/g,'').trim(),
 }
 
 });
@@ -228,97 +99,110 @@ school_name:cols[6]?.replace(/"/g,'').trim(),
 });
 
 
-/* ===============================
-SEARCH
-================================= */
-
-let clicked=false;
-
 function searchData(){
 
-if(clicked) return;
-clicked=true;
-setTimeout(()=>clicked=false,2000);
+const input = document
+.getElementById("searchInput")
+.value
+.trim();
 
-const input=document.getElementById("searchInput").value.trim();
-const resultBox=document.getElementById("resultBox");
+const resultBox = document.getElementById("resultBox");
 
-const student=sheetData.find(
+if(!input){
+resultBox.innerHTML=`
+<div class="box fail">
+<h3><i class="fas fa-exclamation-triangle"></i> Masukkan nomor pendaftaran terlebih dahulu.</h3>
+</div>`;
+return;
+}
+
+const student = sheetData.find(
 s=>s.registration_number===input
 );
 
 if(!student){
 
 resultBox.innerHTML=`
-<div class="fail fade">
-<h2>Data tidak ditemukan</h2>
+<div class="box fail">
+<h3><i class="fas fa-times-circle"></i> Data tidak ditemukan</h3>
 <p>Periksa kembali nomor pendaftaran Anda.</p>
 </div>
 `;
+
 return;
 }
 
-const isAccepted=student.status.toLowerCase().includes("diterima") 
-|| student.status.toLowerCase().includes("lulus");
+const isAccepted = student.status
+.toLowerCase()
+.includes("diterima") || 
+student.status
+.toLowerCase()
+.includes("lulus");
 
 if(isAccepted){
 
-/* CONFETTI */
-confetti({
-particleCount:150,
-spread:120,
-origin:{y:.6}
-});
-
-/* SOUND */
-document.getElementById("successSound").play();
-
 resultBox.innerHTML=`
 
-<div class="success fade">
+<div class="box success">
 
-<h2>✨ SELAMAT ATAS KEBERHASILAN ANDA ✨</h2>
+<h2>🎉 SELAMAT!</h2>
 
-<h1 style="margin:10px 0;">
-${student.student_name}
-</h1>
+<h3>${student.student_name}</h3>
 
-<p><b>DINYATAKAN ${student.status.toUpperCase()}</b></p>
+<p><b>Dinyatakan ${student.status.toUpperCase()}</b><br>
+di <b>${student.school_name}</b></p>
+
+<p>
+<b>${student.major}</b><br>
+${student.registration_path}
+</p>
 
 <hr style="margin:20px 0;">
 
-<p><b>Program Keahlian:</b><br>${student.major}</p>
-<p><b>Jalur:</b><br>${student.registration_path}</p>
+<p><b>Nomor Pendaftaran:</b><br>
+${student.registration_number}</p>
 
-<p style="margin-top:15px;">
-🗓️ <b>Daftar Ulang:</b><br>
+<p style="margin-top:10px;">
+<b>🗓️ Jadwal Daftar Ulang:</b><br>
 ${student.registration_schedule}
 </p>
 
-<button onclick="window.print()" 
-style="margin-top:20px;background:#22c55e;">
-Download / Print Bukti Kelulusan
-</button>
+<hr style="margin:20px 0;">
+
+<h3>📌 Persyaratan yang dibawa:</h3>
+
+<ol>
+<li>Print hasil diterima SPMB</li>
+<li>Membawa Materai 10Rb sebanyak 3 Lembar</li>
+<li>Membawa map berwarna kuning</li>
+<li>FC Persyaratan umum dan khusus</li>
+<li>Surat Keterangan Sehat (Asli)</li>
+<li>SPTJM asli bermaterai</li>
+<li>Memakai seragam sekolah asal dan bersepatu</li>
+<li>Membawa alat tulis</li>
+</ol>
 
 </div>
+
 `;
 
 }else{
 
 resultBox.innerHTML=`
 
-<div class="fail fade">
+<div class="box fail">
 
-<h2>Terima Kasih</h2>
+<h2><i class="fas fa-sad-tear"></i> Mohon Maaf</h2>
 
 <h3>${student.student_name}</h3>
 
-<p>Anda belum dinyatakan diterima di
-<b>${student.school_name}</b>.</p>
+<p>Anda belum dinyatakan diterima di <b>${student.school_name}</b>.</p>
 
-<p>Tetap semangat — masa depan cerah menanti Anda.</p>
+<p>Tetap semangat dan jangan menyerah.  
+Kesempatan sukses masih sangat luas!</p>
 
 </div>
+
 `;
 
 }
@@ -326,6 +210,50 @@ resultBox.innerHTML=`
 }
 
 </script>
-
+ <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SMKN 1 CIREBON</h3>
+                    <p>Sekolah Menengah Kejuruan Negeri 1 Cirebon merupakan lembaga pendidikan vokasi yang unggul dalam prestasi dan siap menghasilkan lulusan yang kompeten di dunia industri.</p>
+                </div>
+                <!-- <div class="footer-col">
+                    <h3>Link Penting</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Profil Sekolah</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Fasilitas Sekolah</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Prestasi Sekolah</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Berita & Kegiatan</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Download Area</a></li>
+                    </ul>
+                </div> -->
+                <div class="footer-col">
+                    <h3>Jurusan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Desain Pemodelan Dan Informasi Bangunan</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Elektronika</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Ketenagalistrikan</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Otomotif</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Mesin</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Jaringan Komputer Dan Telekomunikasi</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Pengembangan Perangkat Lunak Dan Gim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Media Sosial</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.facebook.com/share/1CZoCodBRd/"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/smkn1cirebon/"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@smknegeri1cirebonofficial472"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="https://www.tiktok.com/@smknsatucirebon"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SPMB SMKN 1 Cirebon. All Rights Reserved. | Developed with ❤️ for Education</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
