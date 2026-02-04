@@ -1,640 +1,329 @@
-<!doctype html>
-<html lang="id" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pengumuman SPMB SMK Negeri 1 Cirebon 2026</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/_sdk/element_sdk.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <style>
-    body {
-      box-sizing: border-box;
-    }
-    
-    :root {
-      --primary: #0B47A8;
-      --primary-dark: #052E73;
-      --primary-light: #1E5CC8;
-      --accent: #00D4FF;
-      --white: #ffffff;
-      --light-bg: #F0F7FF;
-    }
-    
-    .font-display {
-      font-family: 'Playfair Display', serif;
-    }
-    
-    .font-body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes shimmer {
-      0% {
-        background-position: -200% 0;
-      }
-      100% {
-        background-position: 200% 0;
-      }
-    }
-    
-    @keyframes pulse-ring {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
-      }
-      70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 20px rgba(0, 212, 255, 0);
-      }
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
-      }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-    
-    .animate-fade-in-down {
-      animation: fadeInDown 0.6s ease-out forwards;
-    }
-    
-    .animate-shimmer {
-      background: linear-gradient(90deg, #0B47A8 25%, #1E5CC8 50%, #0B47A8 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    
-    .search-glow {
-      animation: pulse-ring 2.5s ease-out infinite;
-    }
-    
-    .result-card {
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-    
-    .primary-gradient {
-      background: linear-gradient(135deg, #0B47A8 0%, #1E5CC8 100%);
-    }
-    
-    .accent-gradient {
-      background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
-    }
-    
-    .glass-effect {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    .success-card {
-      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .success-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    
-    .reject-card {
-      background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .reject-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    
-    .accent-line {
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #00D4FF, transparent);
-    }
-  </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full font-body text-gray-800 overflow-auto" style="background: linear-gradient(180deg, #F0F7FF 0%, #E3F2FD 100%);">
-  <div id="app-wrapper" class="w-full min-h-full flex flex-col"><!-- Header -->
-   <header class="primary-gradient text-white py-6 px-4 no-print shadow-lg sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto">
-     <div class="flex items-center justify-between">
-      <div class="flex items-center gap-4"><img src="https://iili.io/ftWp5jn.png" alt="LOGO SMK PNG" class="w-16 h-16 object-contain" loading="lazy" onerror="console.error('Logo failed to load:', this.src); this.style.display='none';">
-       <div>
-        <p class="text-xs text-cyan-300 tracking-widest uppercase font-bold">Seleksi Penerimaan Siswa Baru</p>
-        <h1 id="header-school-name" class="font-display text-2xl font-bold">SMK Negeri 1 Cirebon</h1>
-       </div>
-      </div>
-      <div class="text-right hidden sm:block">
-       <p class="text-xs text-cyan-300 tracking-widest uppercase font-bold">T.A. 2026/2027</p>
-       <p id="sync-indicator" class="text-xs text-green-300 font-semibold mt-1">Sinkronisasi...</p>
-      </div>
-     </div>
-     <div class="accent-line mt-4"></div>
-    </div>
-   </header><!-- Hero Section -->
-   <section class="primary-gradient text-white py-16 px-4 no-print">
-    <div class="max-w-5xl mx-auto">
-     <div class="text-center mb-12">
-      <h2 class="font-display text-5xl md:text-6xl font-bold mb-3 leading-tight">Pengumuman Hasil</h2>
-      <h3 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-6">SPMB 2026</h3>
-      <div class="accent-line mx-auto mb-6" style="width: 120px;"></div>
-      <p class="text-lg text-blue-100">Periksa status penerimaan Anda dengan nomor pendaftaran</p>
-     </div><!-- Search Box -->
-     <div class="max-w-2xl mx-auto">
-      <div class="glass-effect rounded-2xl p-8 shadow-2xl"><label class="block text-gray-700 font-semibold text-center mb-5"> Nomor Pendaftaran </label>
-       <div class="flex flex-col sm:flex-row gap-3">
-        <div class="flex-1"><input type="text" id="search-input" class="w-full px-6 py-4 rounded-xl bg-blue-50 text-slate-800 text-lg font-semibold placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-300/50 transition-all" placeholder="Contoh: 20222174-15-1-00880" maxlength="20">
-        </div><button id="search-btn" class="search-glow px-10 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95" style="background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%); color: #0B47A8;">
-         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-         </svg> CARI </button>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Initial Loading Pop-up Modal -->
-   <div id="initial-loading-state" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999] no-print">
-    <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-sm mx-4 animate-fade-in-up"><!-- Spinner -->
-     <div class="flex justify-center mb-8">
-      <div class="relative w-24 h-24">
-       <div class="absolute inset-0 rounded-full border-4 border-gray-200"></div>
-       <div class="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-600 border-r-blue-600 animate-spin"></div>
-       <div class="absolute inset-4 flex items-center justify-center">
-        <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-       </div>
-      </div>
-     </div><!-- Text -->
-     <div class="text-center mb-8">
-      <h3 class="text-2xl font-bold text-gray-800 mb-2">Memuat Data Terbaru</h3>
-      <p class="text-gray-600 text-sm">Sedang mengunduh data dari spreadsheet...</p>
-     </div><!-- Progress Bar -->
-     <div class="space-y-3">
-      <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
-       <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2.5 rounded-full" style="width: 0%; transition: width 0.3s ease;"></div>
-      </div>
-      <div class="flex justify-between items-center">
-       <p class="text-xs text-gray-500">Memproses...</p>
-       <p id="loading-text" class="text-sm font-bold text-blue-600">0%</p>
-      </div>
-     </div><!-- Dots Animation -->
-     <div class="flex justify-center gap-1.5 mt-6">
-      <div class="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
-      <div class="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
-      <div class="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
-     </div>
-    </div>
-   </div><!-- Search Loading State -->
-   <div id="loading-state" class="hidden py-16 px-4 no-print">
-    <div class="max-w-md mx-auto text-center">
-     <div class="animate-shimmer h-40 rounded-2xl mb-6"></div>
-     <p class="text-gray-600 font-semibold text-lg">Memproses pencarian Anda...</p>
-    </div>
-   </div><!-- Result Container -->
-   <div id="result-container" class="flex-1 py-12 px-4"><!-- Results injected here -->
-   </div><!-- Footer -->
-   <footer class="primary-gradient text-white py-8 px-4 mt-auto no-print">
-    <div class="max-w-5xl mx-auto text-center">
-     <p class="text-lg font-semibold mb-2">SMK Negeri 1 Cirebon</p>
-     <p class="text-sm text-blue-200">Jl. Perjuangan, Sunyaragi, Kec. Kesambi, Kota Cirebon, Jawa Barat 45132</p>
-     <div class="accent-line mx-auto my-4" style="width: 80px;"></div>
-     <p class="text-xs text-blue-200">© 2026 SMK Negeri 1 Cirebon. Seluruh Hak Cipta Dilindungi.</p>
-    </div>
-   </footer>
-  </div>
-  <script>
-    const defaultConfig = {
-      school_name: 'SMK Negeri 1 Cirebon',
-      announcement_title: 'Pengumuman Hasil Seleksi SPMB 2026',
-      search_placeholder: 'Contoh: 20222174-15-1-00880'
-    };
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    let config = { ...defaultConfig };
-    let studentsData = [];
+<title>Pengumuman Hasil SPMB 2026 | SMK Negeri 1 Cirebon</title>
 
-    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjxc3-Df3kU19LyONmTY7K8RMpb_riUr4qKRRTXeLWA45uZzouYmj7aVdaaP5LhWxqBC6yI3GwKWjV/pub?output=csv';
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    function parseCSV(csv) {
-      const lines = csv.trim().split('\n');
-      if (lines.length < 2) return [];
-      
-      const headerLine = lines[0];
-      const headers = [];
-      let current = '';
-      let inQuotes = false;
-      
-      for (let i = 0; i < headerLine.length; i++) {
-        const char = headerLine[i];
-        if (char === '"') {
-          inQuotes = !inQuotes;
-        } else if (char === ',' && !inQuotes) {
-          headers.push(current.trim().replace(/"/g, ''));
-          current = '';
-        } else {
-          current += char;
-        }
-      }
-      headers.push(current.trim().replace(/"/g, ''));
-      
-      const data = [];
-      
-      for (let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (!line) continue;
-        
-        const values = [];
-        let current = '';
-        let inQuotes = false;
-        
-        for (let j = 0; j < line.length; j++) {
-          const char = line[j];
-          if (char === '"') {
-            inQuotes = !inQuotes;
-            current += char;
-          } else if (char === ',' && !inQuotes) {
-            values.push(current.trim().replace(/^"|"$/g, '').trim());
-            current = '';
-          } else {
-            current += char;
-          }
-        }
-        values.push(current.trim().replace(/^"|"$/g, '').trim());
-        
-        const row = {};
-        headers.forEach((header, index) => {
-          row[header] = values[index] || '';
-        });
-        
-        if (row.registration_number) {
-          data.push(row);
-        }
-      }
-      return data;
-    }
+<style>
 
-    async function fetchData() {
-      try {
-        const response = await fetch(CSV_URL);
-        const csv = await response.text();
-        studentsData = parseCSV(csv);
-        console.log('Data loaded:', studentsData.length);
-        
-        // Update sync status
-        updateSyncStatus('Tersinkronisasi', true);
-        return true;
-      } catch (error) {
-        console.error('Error:', error);
-        updateSyncStatus('Gagal sinkronisasi', false);
-        return false;
-      }
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-    function updateSyncStatus(message, isSuccess) {
-      const syncIndicator = document.getElementById('sync-indicator');
-      if (syncIndicator) {
-        syncIndicator.textContent = message;
-        syncIndicator.className = isSuccess ? 'text-green-600 text-xs font-semibold' : 'text-red-600 text-xs font-semibold';
-      }
-    }
+body{
+    background:#f4f7fb;
+}
 
-    async function showInitialLoadingScreen() {
-      return new Promise(async (resolve) => {
-        const initialLoading = document.getElementById('initial-loading-state');
-        const progressBar = document.getElementById('progress-bar');
-        const loadingText = document.getElementById('loading-text');
-        
-        // Animate progress
-        let progress = 0;
-        const progressInterval = setInterval(() => {
-          if (progress < 90) {
-            progress += Math.random() * 30;
-            if (progress > 90) progress = 90;
-            progressBar.style.width = progress + '%';
-            loadingText.textContent = Math.floor(progress) + '%';
-          }
-        }, 300);
-        
-        // Fetch data
-        const success = await fetchData();
-        
-        // Complete progress
-        clearInterval(progressInterval);
-        progressBar.style.width = '100%';
-        loadingText.textContent = '100%';
-        
-        // Hide loading screen after animation
-        setTimeout(() => {
-          initialLoading.classList.add('hidden');
-          resolve(success);
-        }, 800);
-      });
-    }
+/* HERO */
 
-    function startAutoSync() {
-      // Set interval untuk refresh setiap 30 detik
-      setInterval(fetchData, 30000);
-    }
+.hero{
+    height:70vh;
+    background:linear-gradient(135deg,#1a3a6c,#2c5aa0);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
 
-    function searchStudent(regNumber) {
-      const cleanNumber = regNumber.replace(/\s/g, '').toUpperCase().trim();
-      
-      return studentsData.find(s => {
-        const dbNumber = s.registration_number.replace(/\s/g, '').toUpperCase().trim();
-        return dbNumber === cleanNumber;
-      });
-    }
+.hero h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
 
-    function isPassed(status) {
-      const s = status.toUpperCase();
-      return s.includes('DITERIMA') || s.includes('LULUS') || s.includes('PASS');
-    }
+.hero p{
+    opacity:.9;
+}
 
-    function generateResultHTML(student) {
-      if (!student) {
-        return `
-          <div class="result-card max-w-2xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div class="reject-card text-white px-8 py-16 text-center">
-                <div class="text-7xl mb-4">❌</div>
-                <h3 class="font-display text-4xl font-bold mb-2">Maaf!</h3>
-                <p class="text-xl">Anda Belum Diterima</p>
-              </div>
-              
-              <div class="p-8 text-center">
-                <p class="text-gray-600 text-lg mb-6">
-                  Nomor pendaftaran tidak ditemukan dalam sistem kami.
-                </p>
-                <div class="bg-red-50 border-2 border-red-300 rounded-xl p-4">
-                  <p class="text-red-700 font-semibold">
-                    Silakan hubungi bagian pendaftaran jika ada pertanyaan
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      }
+/* CARD */
 
-      const passed = isPassed(student.status);
-      
-      if (passed) {
-        return `
-          <div class="result-card max-w-3xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              <!-- Header -->
-              <div class="success-card text-white px-8 py-16 text-center">
-                <div class="text-7xl mb-4">🎉</div>
-                <h3 class="font-display text-5xl font-bold mb-3">SELAMAT!</h3>
-                <p class="text-2xl">Anda Diterima</p>
-              </div>
-              
-              <!-- Content -->
-              <div class="px-8 py-12">
-                <!-- Student Info -->
-                <div class="text-center mb-10 pb-10 border-b-2 border-gray-100">
-                  <h4 class="font-display text-3xl md:text-4xl font-bold text-gray-800 mb-2">${student.student_name || '-'}</h4>
-                  <p class="text-gray-600 text-lg">Nomor: <span class="font-mono font-bold text-gray-800">${student.registration_number || '-'}</span></p>
-                </div>
-                
-                <!-- Info Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div class="primary-gradient text-white rounded-xl p-6">
-                    <p class="text-sm font-bold uppercase tracking-wide text-blue-200 mb-2">Jurusan</p>
-                    <p class="text-xl font-bold">${student.major || '-'}</p>
-                  </div>
-                  
-                  <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl p-6">
-                    <p class="text-sm font-bold uppercase tracking-wide text-purple-200 mb-2">Jalur Pendaftaran</p>
-                    <p class="text-xl font-bold">${student.registration_path || '-'}</p>
-                  </div>
-                </div>
-                
-                <!-- Schedule -->
-                <div class="accent-gradient text-white rounded-xl p-6 mb-8">
-                  <div class="flex items-start gap-4">
-                    <div class="text-4xl">📅</div>
-                    <div>
-                      <p class="text-sm font-bold uppercase tracking-wide mb-2 opacity-90">Jadwal Daftar Ulang</p>
-                      <p class="text-2xl font-bold">${student.registration_schedule || 'Akan diumumkan'}</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Requirements -->
-                <div class="bg-blue-50 rounded-xl p-8 border border-blue-200">
-                  <h5 class="font-bold text-lg text-gray-800 mb-6 flex items-center gap-3">
-                    <span class="text-2xl">📋</span> Persyaratan Daftar Ulang
-                  </h5>
-                  <ol class="space-y-4">
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">1</span>
-                      <span class="text-gray-700 pt-1">Print hasil diterima SPMB ini</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">2</span>
-                      <span class="text-gray-700 pt-1">Membawa materai 10.000 sebanyak 3 lembar</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">3</span>
-                      <span class="text-gray-700 pt-1">Membawa map berwarna kuning</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">4</span>
-                      <span class="text-gray-700 pt-1">Fotocopy persyaratan umum dan khusus</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">5</span>
-                      <span class="text-gray-700 pt-1">Surat Keterangan Sehat (Asli)</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">6</span>
-                      <span class="text-gray-700 pt-1">Surat Pernyataan Tanggung Jawab Mutlak bermaterai</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">7</span>
-                      <span class="text-gray-700 pt-1">Memakai seragam sekolah masing-masing dan bersepatu</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="flex-shrink-0 w-8 h-8 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm">8</span>
-                      <span class="text-gray-700 pt-1">Membawa alat tulis lengkap</span>
-                    </li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      } else {
-        return `
-          <div class="result-card max-w-2xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div class="reject-card text-white px-8 py-16 text-center">
-                <div class="text-7xl mb-4">❌</div>
-                <h3 class="font-display text-4xl font-bold mb-2">Maaf!</h3>
-                <p class="text-xl">Anda Belum Diterima</p>
-              </div>
-              
-              <div class="p-8 text-center">
-                <h4 class="text-2xl font-bold text-gray-800 mb-2">${student.student_name || '-'}</h4>
-                <p class="text-gray-600 mb-6">Nomor: <span class="font-mono font-bold">${student.registration_number || '-'}</span></p>
-                
-                <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-6">
-                  <p class="text-gray-700 leading-relaxed">
-                    Terima kasih telah mengikuti proses seleksi kami. Kesempatan masih terbuka untuk jalur penerimaan lainnya.
-                  </p>
-                </div>
-                
-                <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
-                  <p class="text-gray-800 font-semibold text-lg mb-2">💪 Tetap Semangat!</p>
-                  <p class="text-gray-700">Terus berusaha dan raih mimpi Anda di masa depan!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-    }
+.card{
+    background:white;
+    max-width:800px;
+    margin:-80px auto 40px;
+    padding:40px;
+    border-radius:14px;
+    box-shadow:0 10px 40px rgba(0,0,0,.08);
+}
 
-    function showLoading() {
-      document.getElementById('loading-state').classList.remove('hidden');
-      document.getElementById('result-container').innerHTML = '';
-    }
+/* INPUT */
 
-    function hideLoading() {
-      document.getElementById('loading-state').classList.add('hidden');
-    }
+.search-box{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
 
-    function displayResult(student) {
-      hideLoading();
-      const container = document.getElementById('result-container');
-      container.innerHTML = generateResultHTML(student);
-      
-      setTimeout(() => {
-        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }
+input{
+    flex:1;
+    height:55px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    padding:0 15px;
+    font-size:18px;
+}
 
-    function handleSearch() {
-      const input = document.getElementById('search-input');
-      const value = input.value.trim();
-      
-      if (!value) {
-        input.focus();
-        return;
-      }
-      
-      showLoading();
-      
-      setTimeout(() => {
-        const student = searchStudent(value);
-        displayResult(student);
-      }, 500);
-    }
+button{
+    background:#e65c00;
+    border:none;
+    color:white;
+    padding:0 30px;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
 
-    async function onConfigChange(newConfig) {
-      config = { ...defaultConfig, ...newConfig };
-      
-      const headerSchool = document.getElementById('header-school-name');
-      if (headerSchool) {
-        headerSchool.textContent = config.school_name || defaultConfig.school_name;
-      }
-      
-      const searchInput = document.getElementById('search-input');
-      if (searchInput) {
-        searchInput.placeholder = config.search_placeholder || defaultConfig.search_placeholder;
-      }
-    }
+button:hover{
+    background:#cc4f00;
+    transform:translateY(-2px);
+}
 
-    function mapToCapabilities(cfg) {
-      return {
-        recolorables: [],
-        borderables: [],
-        fontEditable: undefined,
-        fontSizeable: undefined
-      };
-    }
+/* RESULT */
 
-    function mapToEditPanelValues(cfg) {
-      return new Map([
-        ['school_name', cfg.school_name || defaultConfig.school_name],
-        ['announcement_title', cfg.announcement_title || defaultConfig.announcement_title],
-        ['search_placeholder', cfg.search_placeholder || defaultConfig.search_placeholder]
-      ]);
-    }
+.result{
+    margin-top:30px;
+    animation:fade .4s ease;
+}
 
-    async function init() {
-      if (window.elementSdk) {
-        window.elementSdk.init({
-          defaultConfig,
-          onConfigChange,
-          mapToCapabilities,
-          mapToEditPanelValues
-        });
-      }
-      
-      // Show loading screen and fetch initial data
-      await showInitialLoadingScreen();
-      
-      // Start auto-sync with spreadsheet (every 30 seconds)
-      startAutoSync();
-      
-      const searchBtn = document.getElementById('search-btn');
-      const searchInput = document.getElementById('search-input');
-      
-      searchBtn.addEventListener('click', handleSearch);
-      searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSearch();
-      });
-      
-      searchInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/\s/g, '');
-      });
-    }
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1;}
+}
 
-    init();
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c87b47413b1df0c',t:'MTc3MDE4MjI4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+.success{
+    border-top:6px solid #28a745;
+}
+
+.fail{
+    border-top:6px solid #dc3545;
+}
+
+.box{
+    padding:30px;
+    border-radius:12px;
+    background:white;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+h2{
+    margin-bottom:10px;
+}
+
+ol{
+    margin-left:20px;
+    line-height:1.9;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.hero h1{
+    font-size:28px;
+}
+
+.card{
+    margin:-60px 15px 30px;
+    padding:25px;
+}
+
+.search-box{
+    flex-direction:column;
+}
+
+button{
+    height:50px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+<div>
+<h1>PENGUMUMAN HASIL SPMB 2026</h1>
+<p>SMK Negeri 1 Cirebon</p>
+</div>
+</section>
+
+<!-- CARD -->
+
+<div class="card">
+
+<h2>Cek Hasil Seleksi</h2>
+<p>Masukkan nomor pendaftaran Anda untuk melihat hasil kelulusan.</p>
+
+<div class="search-box">
+<input 
+type="text" 
+id="searchInput"
+placeholder="Masukkan Nomor Pendaftaran..."
+onkeypress="if(event.key==='Enter')searchData()"
+>
+
+<button onclick="searchData()">Cek Hasil</button>
+</div>
+
+<div id="resultBox" class="result"></div>
+
+</div>
+
+<script>
+
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQjxc3-Df3kU19LyONmTY7K8RMpb_riUr4qKRRTXeLWA45uZzouYmj7aVdaaP5LhWxqBC6yI3GwKWjV/pub?output=csv";
+
+let sheetData = [];
+
+fetch(sheetURL)
+.then(res=>res.text())
+.then(csv=>{
+
+const rows = csv.split("\n").slice(1);
+
+sheetData = rows.map(row=>{
+
+const cols = row.split(",");
+
+return{
+registration_number: cols[0]?.replace(/"/g,'').trim(),
+student_name: cols[1]?.replace(/"/g,'').trim(),
+major: cols[2]?.replace(/"/g,'').trim(),
+registration_path: cols[3]?.replace(/"/g,'').trim(),
+status: cols[4]?.replace(/"/g,'').trim(),
+registration_schedule: cols[5]?.replace(/"/g,'').trim(),
+school_name: cols[6]?.replace(/"/g,'').trim(),
+}
+
+});
+
+});
+
+
+function searchData(){
+
+const input = document
+.getElementById("searchInput")
+.value
+.trim();
+
+const resultBox = document.getElementById("resultBox");
+
+if(!input){
+resultBox.innerHTML=`
+<div class="box fail">
+<h3>Masukkan nomor pendaftaran terlebih dahulu.</h3>
+</div>`;
+return;
+}
+
+const student = sheetData.find(
+s=>s.registration_number===input
+);
+
+if(!student){
+
+resultBox.innerHTML=`
+<div class="box fail">
+<h3>Data tidak ditemukan</h3>
+<p>Periksa kembali nomor pendaftaran Anda.</p>
+</div>
+`;
+
+return;
+}
+
+const isAccepted = student.status
+.toLowerCase()
+.includes("diterima") || 
+student.status
+.toLowerCase()
+.includes("lulus");
+
+if(isAccepted){
+
+resultBox.innerHTML=`
+
+<div class="box success">
+
+<h2>🎉 SELAMAT!</h2>
+
+<h3>${student.student_name}</h3>
+
+<p><b>Dinyatakan ${student.status.toUpperCase()}</b><br>
+di <b>${student.school_name}</b></p>
+
+<p>
+<b>${student.major}</b><br>
+${student.registration_path}
+</p>
+
+<hr style="margin:20px 0;">
+
+<p><b>Nomor Pendaftaran:</b><br>
+${student.registration_number}</p>
+
+<p style="margin-top:10px;">
+<b>🗓️ Jadwal Daftar Ulang:</b><br>
+${student.registration_schedule}
+</p>
+
+<hr style="margin:20px 0;">
+
+<h3>📌 Persyaratan yang dibawa:</h3>
+
+<ol>
+<li>Print hasil diterima SPMB</li>
+<li>Membawa Materai 10Rb sebanyak 3 Lembar</li>
+<li>Membawa map berwarna kuning</li>
+<li>FC Persyaratan umum dan khusus</li>
+<li>Surat Keterangan Sehat (Asli)</li>
+<li>SPTJM asli bermaterai</li>
+<li>Memakai seragam sekolah asal dan bersepatu</li>
+<li>Membawa alat tulis</li>
+</ol>
+
+</div>
+
+`;
+
+}else{
+
+resultBox.innerHTML=`
+
+<div class="box fail">
+
+<h2>Mohon Maaf</h2>
+
+<h3>${student.student_name}</h3>
+
+<p>Anda belum dinyatakan diterima di <b>${student.school_name}</b>.</p>
+
+<p>Tetap semangat dan jangan menyerah.  
+Kesempatan sukses masih sangat luas!</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+</script>
+
+</body>
 </html>
