@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPMB SMKN 1 Cirebon | Sistem Penrimaan Murid Baru 2026/2027</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #e65c00;
+            --accent: #f58220;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover, 
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+     .hero {
+    background: 
+    linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+    url('img/bg.png');
+
+    background-position: center;
+    background-size: cover;
+    color: #1a3a6c;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 50px;
+}
+
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 15px;
+        }
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.15);
+            border-radius: var(--radius);
+            padding: 15px;
+            min-width: 100px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(245, 130, 32, 0.4);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 130, 32, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            margin-top: 15px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* SPMB Info Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--light-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--secondary);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 25px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content .date {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Jurusan Section */
+        .jurusan-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-btn.active, 
+        .filter-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        .jurusan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .jurusan-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .jurusan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .jurusan-img {
+            height: 200px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .jurusan-img i {
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+        
+        .jurusan-content {
+            padding: 25px;
+        }
+        
+        .jurusan-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .jurusan-content .tag {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--dark);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        
+        .jurusan-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .jurusan-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 0px solid var(--light-gray);
+        }
+        
+        .btn-detail {
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        .btn-detail:hover {
+            background: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .jurusan-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        /* Kontak Section */
+        .kontak-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .kontak-info {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .kontak-info h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        
+        .kontak-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .kontak-icon {
+            min-width: 45px;
+            height: 45px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .kontak-text h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .kontak-text p, .kontak-text a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .kontak-text a:hover {
+            color: var(--secondary);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .kontak-form {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 92, 0, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-col p {
+            color: #adb5bd;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+                top: 25px;
+            }
+            
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 80%;
+                height: calc(100vh - 80px);
+                padding: 30px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+                padding: 10px;
+            }
+            
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+                padding: 12px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-img {
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .hero {
+                padding: 70px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 8px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+            
+            .jurusan-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="img/logo.png" alt="Logo" style="height: 50px;">
+                    </div>
+                    <div class="logo-text">
+                        SMKN 1 CIREBON
+                        <span>Sekolah Menengah Kejuruan Negeri 1 Cirebon</span>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#beranda" class="active">Beranda</a></li>
+                    <li><a href="#spmb">Informasi SPMB</a></li>
+                    <li><a href="#jurusan">Jurusan</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="hasil_spmb.html">Hasil Seleksi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="container">
+            <h1>SISTEM PENERIMAAN MURID DIDIK BARU</h1>
+            <p>SMKN 1 CIREBON TAHUN AJARAN 2026/2027</p>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Hari</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Jam</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Menit</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Detik</span>
+                </div>
+            </div>
+            <a href="#jurusan" class="btn">Jelajahi Jurusan Kami</a>
+            <a href="#spmb" class="btn btn-outline">Informasi Pendaftaran</a>
+        </div>
+    </section>
+
+    <!-- SPMB Info Section -->
+    <section id="spmb">
+        <div class="container">
+            <div class="section-title">
+                <h2>Informasi SPMB</h2>
+                <p>Seluruh informasi pendaftaran, persyaratan, dan tahapan seleksi Penerimaan Peserta Didik Baru SMKN 1 Cirebon Tahun Ajaran 2026/2027</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">1 Februari - 15 Maret 2026</span>
+                        <h3>Pendaftaran Online</h3>
+                        <p>Buka website resmi SPMB SMKN 1 Cirebon, lengkapi data diri, unggah dokumen yang dipersyaratkan, dan cetak bukti pendaftaran.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">18 - 20 Maret 2026</span>
+                        <h3>Verifikasi Berkas</h3>
+                        <p>Peserta datang ke sekolah untuk verifikasi berkas fisik sesuai jadwal yang telah ditentukan berdasarkan nomor pendaftaran.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">25 - 27 Maret 2026</span>
+                        <h3>Tes Kompetensi</h3>
+                        <p>Mengikuti tes akademik dan tes minat bakat sesuai jurusan yang dipilih. Peserta wajib membawa kartu peserta dan alat tulis.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">5 April 2026</span>
+                        <h3>Pengumuman Hasil</h3>
+                        <p>Pengumuman kelulusan dapat diakses melalui website resmi SPMB SMKN 1 Cirebon dan pengumuman di papan pengumuman sekolah.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">10 - 15 April 2026</span>
+                        <h3>Daftar Ulang</h3>
+                        <p>Peserta yang dinyatakan lulus wajib melakukan daftar ulang dengan menyerahkan dokumen fisik dan melunasi biaya daftar ulang.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jurusan Section -->
+    <section id="jurusan" style="background-color: white;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Jurusan Unggulan</h2>
+                <p>SMKN 1 Cirebon memiliki 7 kompetensi keahlian yang siap menghadapi dunia industri dan wirausaha</p>
+            </div>
+            
+            <div class="jurusan-filters">
+                <button class="filter-btn active" data-filter="all">Semua Jurusan</button>
+                
+            </div>
+            
+            <div class="jurusan-grid">
+                <!-- Jurusan 1 -->
+                <div class="jurusan-card" data-category="teknologi">
+                    <div class="jurusan-img">
+                        <img src="img/DSC03077.JPG" alt="pplg" style="height: 300px;">
+                    </div>
+                    <div class="jurusan-content">
+                        <span class="tag">Rekayasa Perangkat Lunak</span>
+                        <h3>Pengembangan Perangkat Lunak Dan Gim</h3>
+                        <p>Mempelajari pengembangan aplikasi, website, dan sistem informasi menggunakan berbagai bahasa pemrograman modern.</p>
+                        <!-- <div class="jurusan-footer">
+                            <a href="#" class="btn-detail">Detail Jurusan <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-laptop-code jurusan-icon"></i>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- Jurusan 2 -->
+                <div class="jurusan-card" data-category="teknologi">
+                    <div class="jurusan-img">
+                        <img src="img/to.jpg" alt="to" style="height: 300px;">
+                    </div>
+                    <div class="jurusan-content">
+                        <span class="tag">Teknik Kendaraan Ringan</span>
+                        <h3>Teknik Otomotif</h3>
+                        <p>Mempelajari perawatan, perbaikan, dan modifikasi kendaraan ringan dengan fasilitas bengkel bertaraf industri.</p>
+                        <!-- <div class="jurusan-footer">
+                            <a href="#" class="btn-detail">Detail Jurusan <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-car jurusan-icon"></i>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <div class="jurusan-card" data-category="teknologi">
+                    <div class="jurusan-img">
+                        <img src="img/JURUSAN/TPM 2.png" alt="tm" style="height: 300px;">
+                    </div>
+                    <div class="jurusan-content">
+                        <span class="tag">Teknik Pemesinan</span>
+                        <h3>Teknik Mesin</h3>
+                        <p>Teknik Mesin mempelajari keterampilan merancang, membuat, mengoperasikan, dan merawat mesin serta komponen industri menggunakan teknologi modern.</p>
+                        <!-- <div class="jurusan-footer">
+                            <a href="#" class="btn-detail">Detail Jurusan <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-car jurusan-icon"></i>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <div class="jurusan-card" data-category="teknologi">
+                    <div class="jurusan-img">
+                        <img src="img/JURUSAN/TKJ 1.png" alt="tkj" style="height: 300px;">
+                    </div>
+                    <div class="jurusan-content">
+                        <span class="tag">Teknik Jaringan Komputer</span>
+                        <h3>Teknik Jaringan Komputer Dan Telekomunikasi</h3>
+                        <p>TJKT (Teknik Jaringan Komputer dan Telekomunikasi) adalah jurusan yang mempelajari instalasi jaringan, konfigurasi server, perangkat telekomunikasi, serta keamanan sistem untuk mendukung komunikasi digital modern.</p>
+                        <!-- <div class="jurusan-footer">
+                            <a href="#" class="btn-detail">Detail Jurusan <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-car jurusan-icon"></i>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <div class="jurusan-card" data-category="teknologi">
+                    <div class="jurusan-img">
+                        <img src="img/JURUSAN/TEI 2.png" alt="te" style="height: 300px;">
+                    </div>
+                    <div class="jurusan-content">
+                        <span class="tag">Teknik Elektronika industri</span>
+                        <h3>Teknik Elektro</h3>
+                        <p>Teknik Elektro adalah jurusan yang mempelajari instalasi, perakitan dan perawatan perangkat elektronik, serta sistem kontrol yang digunakan di rumah, gedung, maupun industri.</p>
+                        <!-- <div class="jurusan-footer">
+                            <a href="#" class="btn-detail">Detail Jurusan <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-car jurusan-icon"></i>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <div class="jurusan-card" data-category="teknologi">
+                    <div class="jurusan-img">
+                        <img src="img/JURUSAN/TITL 2.png"alt="tl" style="height: 300px;">
+                    </div>
+                    <div class="jurusan-content">
+                        <span class="tag">Teknik Instalasi Tenaga Listrik</span>
+                        <h3>Teknik Ketenagalistrikan</h3>
+                        <p>Teknik Listrik adalah jurusan yang mempelajari pemasangan, perawatan, dan perbaikan instalasi listrik serta pengoperasian sistem tenaga listrik secara aman dan efisien.</p>
+                        <!-- <div class="jurusan-footer">
+                            <a href="#" class="btn-detail">Detail Jurusan <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-car jurusan-icon"></i>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <div class="jurusan-card" data-category="teknologi">
+                    <div class="jurusan-img">
+                        <img src="img/JURUSAN/BANGUNAN 2.png         " alt="dpib" style="height: 300px;">
+                    </div>
+                    <div class="jurusan-content">
+                        <span class="tag">Desain Pemodelan Dan Informasi Bangunan</span>
+                        <h3>Desain Pemodelan Dan Informasi Bangunan</h3>
+                        <p>DPIB (Desain Pemodelan dan Informasi Bangunan) adalah jurusan yang mempelajari perencanaan, menggambar, dan membuat model bangunan menggunakan software desain serta memahami konstruksi sesuai standar teknik.</p>
+                        <!-- <div class="jurusan-footer">
+                            <a href="#" class="btn-detail">Detail Jurusan <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-car jurusan-icon"></i>
+                        </div> -->
+                    </div>
+                </div>                                    
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Tim admin SPMB siap membantu Anda dengan informasi lebih lanjut melalui WhatsApp Bot atau mengisi formulir di bawah ini</p>
+            </div>
+            
+            <div class="kontak-container">
+                <div class="kontak-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="kontak-text">
+                            <h4>Alamat Sekolah</h4>
+                            <p>Jl. Perjuangan, Sunyaragi, Kec. Kesambi, Kota Cirebon, Jawa Barat 45132</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="kontak-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08.00 - 15.00 WIB<br>Sabtu: Tutup<br>Minggu: Tutup</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="kontak-text">
+                            <h4>Telepon</h4>
+                            <p>(0231) 480202</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="kontak-text">
+                            <h4>Email</h4>
+                            <p>info@smkn1cirebon.sch.id</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20SPMB%20SMKN%201%20Cirebon,%20saya%20ingin%20bertanya%20tentang..." class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                    </a>
+                </div>
+                
+                <!-- <div class="kontak-form">
+                    <h3>Kirim Pertanyaan</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap</label>
+                            <input type="text" id="nama" class="form-control" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Masukkan email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nohp">Nomor WhatsApp</label>
+                            <input type="tel" id="nohp" class="form-control" placeholder="Contoh: 081234567890" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jurusan">Jurusan yang diminati</label>
+                            <select id="jurusan" class="form-control" required>
+                                <option value="">Pilih Jurusan</option>
+                                <option value="rpl">Rekayasa Perangkat Lunak</option>
+                                <option value="tkj">Teknik Komputer & Jaringan</option>
+                                <option value="tkr">Teknik Kendaraan Ringan</option>
+                                <option value="ak">Akuntansi</option>
+                                <option value="mm">Multimedia</option>
+                                <option value="kep">Keperawatan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pesan">Pertanyaan</label>
+                            <textarea id="pesan" class="form-control" placeholder="Tulis pertanyaan Anda disini..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Kirim Pertanyaan</button>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20SPMB%20SMKN%201%20Cirebon,%20saya%20ingin%20bertanya%20tentang..." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SMKN 1 CIREBON</h3>
+                    <p>Sekolah Menengah Kejuruan Negeri 1 Cirebon merupakan lembaga pendidikan vokasi yang unggul dalam prestasi dan siap menghasilkan lulusan yang kompeten di dunia industri.</p>
+                </div>
+                <!-- <div class="footer-col">
+                    <h3>Link Penting</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Profil Sekolah</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Fasilitas Sekolah</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Prestasi Sekolah</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Berita & Kegiatan</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Download Area</a></li>
+                    </ul>
+                </div> -->
+                <div class="footer-col">
+                    <h3>Jurusan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Desain Pemodelan Dan Informasi Bangunan</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Elektronika</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Ketenagalistrikan</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Otomotif</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Mesin</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Teknik Jaringan Komputer Dan Telekomunikasi</a></li>
+                        <li><a href="#jurusan"><i class="fas fa-chevron-right"></i> Pengembangan Perangkat Lunak Dan Gim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Media Sosial</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.facebook.com/share/1CZoCodBRd/"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/smkn1cirebon/"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@smknegeri1cirebonofficial472"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="https://www.tiktok.com/@smknsatucirebon"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SPMB SMKN 1 Cirebon. All Rights Reserved. | Developed with ❤️ for Education</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date("March 15, 2026 23:59:59").getTime();
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Jurusan Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const jurusanCards = document.querySelectorAll('.jurusan-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                jurusanCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handling
+        const kontakForm = document.querySelector('.kontak-form form');
+        if(kontakForm) {
+            kontakForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Terima kasih! Pertanyaan Anda telah terkirim. Admin akan segera membalas melalui WhatsApp.');
+                kontakForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
